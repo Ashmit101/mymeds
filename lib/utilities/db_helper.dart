@@ -50,7 +50,12 @@ class DBHelper {
 
 
   static Future<List<Map<String, dynamic>>> readAllMedicines() async {
-    final result = await _db?.query(_tableName);
+    final result = await _db?.query(_tableName, where: '"type" = ?', whereArgs: ['1']);
+    return result as List<Map<String, dynamic>>;
+  }
+
+  static Future<List<Map<String, dynamic>>> readAllActivities() async {
+    final result = await _db?.query(_tableName, where: '"type" = ?', whereArgs: ['2']);
     return result as List<Map<String, dynamic>>;
   }
 }

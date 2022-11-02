@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import '../models/activity.dart';
 import '../utilities/medicine_controller.dart';
 import '../widgets/input_field.dart';
 import '../models/medicine.dart';
@@ -20,7 +21,7 @@ class AddItem extends StatefulWidget {
 class _AddItemState extends State<AddItem> {
   bool _isForMedicine = true;
 
-  final MedicineController _medicineController = Get.put(MedicineController());
+  final ItemController _medicineController = Get.put(ItemController());
   final _titleEditingController = TextEditingController();
   final _noteEditingController = TextEditingController();
 
@@ -160,7 +161,6 @@ class _AddItemState extends State<AddItem> {
                     ElevatedButton(
                         onPressed: () {
                           _validateData();
-                          print('AddMedicine: Add pressed');
                         },
                         child: const Text('Add'))
                   ],
@@ -213,7 +213,13 @@ class _AddItemState extends State<AddItem> {
   _validateData() {
     if (_titleEditingController.text.isNotEmpty &&
         _noteEditingController.text.isNotEmpty) {
-      _addMedicineToDB();
+      if (_isForMedicine) {
+        print("Adding to medicine");
+        _addMedicineToDB();
+      } else {
+        print("Adding to activities");
+        _addActivityToDB();
+      }
       Get.back();
     } else if (_titleEditingController.text.isEmpty ||
         _noteEditingController.text.isEmpty) {
@@ -227,18 +233,18 @@ class _AddItemState extends State<AddItem> {
   _addMedicineToDB() async {
     int? value = await _medicineController.addMedicine(
         medicine: Medicine(
-          title: _titleEditingController.text,
-          note: _noteEditingController.text,
-          date: DateFormat.yMd().format(_selectedDate),
-          meal: _getMeal(_selectedMeal),
-          sequence: _getSequence(_selectedSequence),
-          dose: 10,
-        ));
+      title: _titleEditingController.text,
+      note: _noteEditingController.text,
+      date: DateFormat.yMd().format(_selectedDate),
+      meal: _getMeal(_selectedMeal),
+      sequence: _getSequence(_selectedSequence),
+      dose: 10,
+    ));
     print("Medicine stored in id : $value");
   }
 
   _getMeal(String selectedMeal) {
-    switch(selectedMeal){
+    switch (selectedMeal) {
       case 'Breakfast':
         return Meals.breakfast.index;
       case 'Lunch':
@@ -249,10 +255,21 @@ class _AddItemState extends State<AddItem> {
   }
 
   _getSequence(String selectedSequence) {
-    if(selectedSequence == 'After') {
+    if (selectedSequence == 'After') {
       return Sequence.after.index;
     } else {
       return Sequence.before.index;
     }
+  }
+
+  void _addActivityToDB() async {
+    int? value = await _medicineController.addActivity(
+        activity: Activity(
+      title: _titleEditingController.text,
+      note: _noteEditingController.text,
+      date: DateFormat.yMd().format(_selectedDate),
+      time: _selectedTime,
+    ));
+    print("Activity stored in id : $value");
   }
 }
