@@ -1,3 +1,9 @@
+// Local Import
+
+// Screens
+import 'screens/home.dart';
+
+// Library Import
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:get/get.dart';
@@ -83,25 +89,18 @@ class _NavigationBarState extends State<NavigationBar> {
   }
 
   Widget primaryFeature({required int index}) {
-    Widget primaryWidget;
     switch (index) {
       case 1:
-        // primaryWidget = const Container();
-        break; //Ashmit
+        return Container(); // Ashmit
 
       case 2:
-        // primaryWidget = const PharmaciesMap();
-        break; //Rujal
+        return Container(); //Rujal
 
       case 3:
-        // primaryWidget = const More(); //Anju
-        break;
+        return Container(); //Anju
+
       default:
-        // primaryWidget = const HomeScreen();
+        return const HomeScreen();
     }
-    return Container();
   }
-
-
-
 }
