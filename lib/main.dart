@@ -5,6 +5,7 @@ import 'package:my_meds/screens/reminders.dart';
 import 'package:my_meds/utilities/db_helper.dart';
 
 import 'screens/home.dart';
+import 'screens/pharm_contact.dart';
 
 // Library Import
 import 'package:flutter/material.dart';
@@ -77,6 +78,7 @@ class _NavigationBarState extends State<NavigationBar> {
       ),
       body: Container(
         color: Colors.indigo,
+        padding: const EdgeInsets.all(10.0),
         height: double.infinity,
         width: double.infinity,
         child: primaryFeature(index: navigationIndex),
@@ -88,20 +90,17 @@ class _NavigationBarState extends State<NavigationBar> {
     Widget primaryWidget;
     switch (index) {
       case 1:
-
         return Reminder(); // Ashmit
 
 
       case 2:
-         primaryWidget = Container();
-        break; //Rujal
+        return const PharmContactScreen(); //Rujal
 
       case 3:
-        primaryWidget =  More(); 
-        break;
+        return  const More();
+
       default:
-         primaryWidget = Container();
+        return Container();
     }
-    return primaryWidget;
   }
 }

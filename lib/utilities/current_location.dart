@@ -3,6 +3,7 @@ import 'package:location/location.dart';
 Future<LocationData?> getLocationData() async {
   Location location = Location();
 
+  // print('inside');
   bool serviceEnabled;
   PermissionStatus permissionGranted;
   LocationData locationData;
@@ -22,7 +23,8 @@ Future<LocationData?> getLocationData() async {
       return null;
     }
   }
-
+  // print('1');
   locationData = await location.getLocation();
+  // print('2');
   return locationData;
 }
