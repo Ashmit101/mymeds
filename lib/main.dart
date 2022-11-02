@@ -95,7 +95,7 @@ class _NavigationBarState extends State<NavigationBar> {
         return Container(); // Ashmit
 
       case 2:
-        return PharmContactScreen(); //Rujal
+        return const PharmContactScreen(); //Rujal
 
       case 3:
         return Container(); //Anju
