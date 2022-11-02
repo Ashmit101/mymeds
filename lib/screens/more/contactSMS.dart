@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttercontactpicker/fluttercontactpicker.dart';
 import 'package:flutter_sms/flutter_sms.dart';
+import 'package:location/location.dart';
+import 'package:my_meds/utilities/current_location.dart';
 
 
 class ImportContact extends StatefulWidget {
@@ -47,7 +49,8 @@ List<String> recipents = [];
 
   
   void currentLocation() async{         //To get Current Location
-      message = 'test message';
+      LocationData? locationData = await getLocationData();
+      message = 'Latitude: ${locationData?.latitude.toString()} Longitude: ${locationData?.longitude.toString()} Date-Time: ${DateTime.fromMillisecondsSinceEpoch(locationData?.time?.toDouble().round() as int).toString()}';
       _sendSMS(message, recipents);
 
    }
@@ -171,16 +174,10 @@ static Contacts fromJson(Map<String, dynamic> json) => Contacts(
 
 }
 
-// Future <void> deleteContact(String ID)async{
-//   await FirebaseFirestore.instance.runTransaction((Transaction myTransaction) async{
-//     await myTransaction.delete(snapshot.data.document)
-//   });
-// }
 
 void _sendSMS(String message, List<String> recipents) async{
 
-// String message = "This is a test message!";
-// List<String> recipents = ["9840194288","9860643738"];
+
   String sendResult = await sendSMS(message: message, recipients:  recipents)
    .catchError((err){
    });
@@ -193,9 +190,3 @@ for(int i=0;i<contact.length;i++){
 }
 return Extractnumber;
 }
-
-
-
-
-
-

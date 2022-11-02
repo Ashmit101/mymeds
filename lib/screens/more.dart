@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_meds/screens/more/contactSMS.dart';
-
+import 'package:get/get.dart';
 
 
 class More extends StatelessWidget {
@@ -16,13 +16,18 @@ class More extends StatelessWidget {
           title:  const Text('Call and SMS'),
           subtitle:  const Text('Emergency call and SMS'),
           onTap: () {
-            Navigator.push(
-             context,
-             MaterialPageRoute(builder: (context) => const ImportContact()),
-            );
+            Get.to(ImportContact());
           },
         ),
-
+//                 ListTile(
+          
+//           leading: const CircleAvatar(child: Icon(Icons.share)),
+//           title: const Text('Share Medication'),
+//           subtitle: const Text('Share your medication details'),
+//           onTap: () {     
+//             Get.to();
+// },
+//     ),
       ],
     );
   }
