@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_meds/screens/more/contactSMS.dart';
 import 'package:get/get.dart';
-
+import 'package:my_meds/screens/more/shareMedication.dart';
+import 'package:share_plus/share_plus.dart';
 
 class More extends StatelessWidget {
   const More({super.key});
@@ -19,17 +20,18 @@ class More extends StatelessWidget {
             Get.to(ImportContact());
           },
         ),
-//                 ListTile(
+        ListTile(
           
-//           leading: const CircleAvatar(child: Icon(Icons.share)),
-//           title: const Text('Share Medication'),
-//           subtitle: const Text('Share your medication details'),
-//           onTap: () {     
-//             Get.to();
-// },
-//     ),
-      ],
-    );
+          leading: const CircleAvatar(child: Icon(Icons.share)),
+          title: const Text('Share Medication'),
+          subtitle: const Text('Share your medication details'),
+          onTap: () {                
+            String medicationList = "Test";
+            shareMed(medicationList);
+          },
+    ),
+        ],
+      );
   }
 }
 
