@@ -65,7 +65,7 @@ class _NavigationBarState extends State<NavigationBar> {
         buttonBackgroundColor: Colors.black,
         backgroundColor: Colors.blueAccent,
         animationCurve: Curves.easeInSine,
-        animationDuration: const Duration(milliseconds: 500),
+        animationDuration: const Duration(milliseconds: 200),
         onTap: (index) {
           setState(() {
             navigationIndex = index;

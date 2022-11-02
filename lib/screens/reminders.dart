@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hawk_fab_menu/hawk_fab_menu.dart';
+import 'package:my_meds/screens/form.dart';
 import 'package:tab_container/tab_container.dart';
 
 class Reminder extends StatelessWidget {
@@ -78,5 +79,6 @@ class Reminder extends StatelessWidget {
   }
 
   void _goToForm({required bool isForMedicine}) {
+    Get.to(AddItem(isForMedicine: isForMedicine,));
   }
 }
