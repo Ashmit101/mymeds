@@ -1,6 +1,8 @@
 // Local Import
 
 // Screens
+import 'package:my_meds/screens/reminders.dart';
+
 import 'screens/home.dart';
 
 // Library Import
@@ -49,14 +51,6 @@ class _NavigationBarState extends State<NavigationBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: Visibility(
-          visible: navigationIndex == 1,
-          child: FloatingActionButton(
-            child: const Icon(Icons.add),
-            onPressed: () {
-              // _goToForm();
-            },
-          )),
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
         index: navigationIndex,
@@ -81,7 +75,6 @@ class _NavigationBarState extends State<NavigationBar> {
       ),
       body: Container(
         color: Colors.indigo,
-        padding: EdgeInsets.all(10.0),
         height: double.infinity,
         width: double.infinity,
         child: primaryFeature(index: navigationIndex),
@@ -93,8 +86,9 @@ class _NavigationBarState extends State<NavigationBar> {
     Widget primaryWidget;
     switch (index) {
       case 1:
-         primaryWidget = Container();
-        break; //Ashmit
+
+        return Reminder(); // Ashmit
+
 
       case 2:
          primaryWidget = Container();
