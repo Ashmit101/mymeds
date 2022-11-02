@@ -44,6 +44,7 @@ dependencies:
   flutter_sms: ^2.3.3
   location: ^4.4.0
   share_plus: ^6.2.0
+  webview_flutter: ^3.0.4
 
 dev_dependencies:
   flutter_test:
