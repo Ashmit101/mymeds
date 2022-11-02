@@ -17,9 +17,11 @@ class _HomeScreen extends State<HomeScreen> {
 
   void getCurrentLocation() async {
     LocationData? locationData = await getLocationData();
-    setState(() {
-      _locationData = locationData;
-    });
+    if (mounted) {
+      setState(() {
+        _locationData = locationData;
+      });
+    }
   }
 
   @override
