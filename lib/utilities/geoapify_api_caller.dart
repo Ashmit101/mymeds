@@ -1,6 +1,10 @@
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'package:location/location.dart';
+
+import 'current_location.dart';
+
 // For json parsing
 import 'dart:convert';
 
@@ -13,7 +17,7 @@ class NearbyPharmaData {
   String phoneNo;
 }
 
-Future<List<NearbyPharmaData>> retrievePharmaData(double latitude, double longitude, num limit) async {
+Future<List<NearbyPharmaData>> retrievePharmaData(double longitude, double latitude, num limit) async {
   await dotenv.load(fileName: '.env');
   String? apiKey = dotenv.env['GEOAPIFY_API_KEY'];
   String? httpCall;
@@ -21,6 +25,9 @@ Future<List<NearbyPharmaData>> retrievePharmaData(double latitude, double longit
   List<NearbyPharmaData> pharmaData = [];
 
   List<double> bounds = [];
+
+
+  // print('in future: long $longitude, lat $latitude');
 
   bounds.add(longitude + 0.5);
   bounds.add(latitude + 0.5);
@@ -41,6 +48,7 @@ Future<List<NearbyPharmaData>> retrievePharmaData(double latitude, double longit
   if (response != null) {
     pharmaData = parseJson(response.body);
   }
+  // print (pharmaData.toString());
   return pharmaData;
 }
 

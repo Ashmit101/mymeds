@@ -6,18 +6,18 @@ import 'package:latlong2/latlong.dart';
 // Local Import
 import '../utilities/geoapify_api_caller.dart';
 
-// Marker createMarker(NearbyPharmaData pharmadata) {
-//   print('creating marker for ${pharmadata.name}');
-//   return Marker(
-//       point: LatLng(
-//           pharmadata.latitude, pharmadata.longitude
-//       ),
-//       builder:  (buildContext) {
-//         print('Displaying at ${pharmadata.latitude}, ${pharmadata.longitude}');
-//         return  const Icon(Icons.local_hospital, color: Colors.blue,);
-//       }
-//   );
-// }
+Marker createMarker(NearbyPharmaData pharmadata) {
+  print('creating marker for ${pharmadata.name}');
+  return Marker(
+      point: LatLng(
+          pharmadata.latitude, pharmadata.longitude
+      ),
+      builder:  (buildContext) {
+        print('Displaying at ${pharmadata.latitude}, ${pharmadata.longitude}');
+        return  const Icon(Icons.local_hospital, color: Colors.blue,);
+      }
+  );
+}
 
 class PharmaLocation extends StatelessWidget {
   const PharmaLocation({super.key});

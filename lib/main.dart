@@ -2,7 +2,7 @@
 
 // Screens
 import 'screens/home.dart';
-import 'screens/map.dart';
+import 'screens/pharm_contact.dart';
 
 // Library Import
 import 'package:flutter/material.dart';
@@ -95,7 +95,7 @@ class _NavigationBarState extends State<NavigationBar> {
         return Container(); // Ashmit
 
       case 2:
-        return const PharmaciesMap(); //Rujal
+        return PharmContactScreen(); //Rujal
 
       case 3:
         return Container(); //Anju
