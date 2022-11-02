@@ -9,3 +9,4 @@ To make an user friendly application that has the following features:
 - Lets you add and remove emergency contacts
 - Web search of the medicines
 - Share the list of the medications
+- Multilingual application (Nepali and English)
