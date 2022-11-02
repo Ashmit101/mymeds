@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_meds/screens/more/contactSMS.dart';
 import 'package:get/get.dart';
+import 'package:my_meds/screens/more/search.dart';
 import 'package:my_meds/screens/more/shareMedication.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -28,6 +29,15 @@ class More extends StatelessWidget {
           onTap: () {                
             String medicationList = "Test";
             shareMed(medicationList);
+          },
+    ),
+            ListTile(
+          
+          leading: const CircleAvatar(child: Icon(Icons.search)),
+          title: const Text('Search Medicine'),
+          subtitle: const Text('Find more information about the medicine'),
+          onTap: () {                
+            Get.to(WebSearch());
           },
     ),
         ],
