@@ -2,6 +2,7 @@
 
 // Screens
 import 'package:my_meds/screens/reminders.dart';
+import 'package:my_meds/utilities/db_helper.dart';
 
 import 'screens/home.dart';
 
@@ -15,6 +16,7 @@ import 'package:my_meds/screens/more.dart';
 
  Future main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await DBHelper.initDb();
   await Firebase.initializeApp();
 
   runApp(const MyApp());

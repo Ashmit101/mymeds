@@ -7,7 +7,8 @@ class Activity extends Item {
       {required super.title,
       required super.note,
       required super.date,
-      required this.time});
+      required this.time,
+      super.type = 2});
 
   Activity.fromJson(Map<String, dynamic> json)
       : time = json['time'],
@@ -20,6 +21,7 @@ class Activity extends Item {
     data['date'] = date;
     data['note'] = note;
     data['time'] = time;
+    data['type'] = type;
     return data;
   }
 }

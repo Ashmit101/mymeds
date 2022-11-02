@@ -1,8 +1,8 @@
 import 'item.dart';
 
 class Medicine extends Item {
-  Meals meal;
-  Sequence sequence;
+  int meal;
+  int sequence;
   int dose;
 
   Medicine(
@@ -12,7 +12,8 @@ class Medicine extends Item {
       required this.meal,
       required this.sequence,
       required this.dose,
-      super.id});
+      super.id,
+      super.type = 1});
 
   Medicine.fromJson(Map<String, dynamic> json)
       : dose = json["dose"],
@@ -29,6 +30,7 @@ class Medicine extends Item {
     data['dose'] = dose;
     data['meal'] = meal;
     data['sequence'] = sequence;
+    data['type'] = type;
     return data;
   }
 }

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import '../utilities/medicine_controller.dart';
 import '../widgets/input_field.dart';
 import '../models/medicine.dart';
 
@@ -19,7 +20,7 @@ class AddItem extends StatefulWidget {
 class _AddItemState extends State<AddItem> {
   bool _isForMedicine = true;
 
-  // final MedicineController _medicineController = Get.put(MedicineController());
+  final MedicineController _medicineController = Get.put(MedicineController());
   final _titleEditingController = TextEditingController();
   final _noteEditingController = TextEditingController();
 
@@ -224,16 +225,34 @@ class _AddItemState extends State<AddItem> {
   }
 
   _addMedicineToDB() async {
-    // int? value = await _medicineController.addMedicine(
-    //     medicine: Medicine(
-    //       title: _titleEditingController.text,
-    //       note: _noteEditingController.text,
-    //       date: DateFormat.yMd().format(_selectedDate),
-    //       time: _selectedTime,
-    //       dose: 10,
-    //     ));
-    // print("Medicine stored in id : $value");
+    int? value = await _medicineController.addMedicine(
+        medicine: Medicine(
+          title: _titleEditingController.text,
+          note: _noteEditingController.text,
+          date: DateFormat.yMd().format(_selectedDate),
+          meal: _getMeal(_selectedMeal),
+          sequence: _getSequence(_selectedSequence),
+          dose: 10,
+        ));
+    print("Medicine stored in id : $value");
   }
 
-  void _openSequenceOptions() {}
+  _getMeal(String selectedMeal) {
+    switch(selectedMeal){
+      case 'Breakfast':
+        return Meals.breakfast.index;
+      case 'Lunch':
+        return Meals.lunch.index;
+      case 'Dinner':
+        return Meals.dinner.index;
+    }
+  }
+
+  _getSequence(String selectedSequence) {
+    if(selectedSequence == 'After') {
+      return Sequence.after.index;
+    } else {
+      return Sequence.before.index;
+    }
+  }
 }

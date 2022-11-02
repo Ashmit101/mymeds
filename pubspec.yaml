@@ -47,6 +47,7 @@ dependencies:
   hawk_fab_menu: ^1.2.0
   tab_container: ^2.0.0
   intl: ^0.17.0
+  sqflite: ^2.2.0+3
 
 dev_dependencies:
   flutter_test:
