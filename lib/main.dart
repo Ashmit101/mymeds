@@ -8,11 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:my_meds/screens/more.dart';
 
 
  Future main() async{
-  // WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 
   runApp(const MyApp());
 }
@@ -89,18 +90,22 @@ class _NavigationBarState extends State<NavigationBar> {
   }
 
   Widget primaryFeature({required int index}) {
+    Widget primaryWidget;
     switch (index) {
       case 1:
-        return Container(); // Ashmit
+         primaryWidget = Container();
+        break; //Ashmit
 
       case 2:
-        return Container(); //Rujal
+         primaryWidget = Container();
+        break; //Rujal
 
       case 3:
-        return Container(); //Anju
-
+        primaryWidget =  More(); 
+        break;
       default:
-        return const HomeScreen();
+         primaryWidget = Container();
     }
+    return primaryWidget;
   }
 }
