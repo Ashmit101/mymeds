@@ -2,6 +2,7 @@
 
 // Screens
 import 'screens/home.dart';
+import 'screens/map.dart';
 
 // Library Import
 import 'package:flutter/material.dart';
@@ -80,7 +81,7 @@ class _NavigationBarState extends State<NavigationBar> {
       ),
       body: Container(
         color: Colors.indigo,
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         height: double.infinity,
         width: double.infinity,
         child: primaryFeature(index: navigationIndex),
@@ -94,7 +95,7 @@ class _NavigationBarState extends State<NavigationBar> {
         return Container(); // Ashmit
 
       case 2:
-        return Container(); //Rujal
+        return const PharmaciesMap(); //Rujal
 
       case 3:
         return Container(); //Anju
