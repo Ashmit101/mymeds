@@ -24,6 +24,7 @@ class _AddItemState extends State<AddItem> {
   final ItemController _medicineController = Get.put(ItemController());
   final _titleEditingController = TextEditingController();
   final _noteEditingController = TextEditingController();
+  final _doseEditingController = TextEditingController();
 
   DateTime _selectedDate = DateTime.now();
   String _selectedTime =
@@ -96,9 +97,10 @@ class _AddItemState extends State<AddItem> {
               ),
               Visibility(
                   visible: _isForMedicine,
-                  child: const MyInputField(
+                  child: MyInputField(
                     title: 'Available dose',
                     hint: '0',
+                    controller: _doseEditingController,
                   )),
               Visibility(
                 visible: _isForMedicine,
@@ -238,7 +240,7 @@ class _AddItemState extends State<AddItem> {
       date: DateFormat.yMd().format(_selectedDate),
       meal: _getMeal(_selectedMeal),
       sequence: _getSequence(_selectedSequence),
-      dose: 10,
+      dose: int.parse(_doseEditingController.text),
     ));
     print("Medicine stored in id : $value");
   }

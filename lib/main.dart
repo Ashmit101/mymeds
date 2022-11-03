@@ -3,6 +3,7 @@
 // Screens
 import 'package:my_meds/screens/reminders.dart';
 import 'package:my_meds/utilities/db_helper.dart';
+import 'package:my_meds/widgets/themes.dart';
 
 import 'screens/home.dart';
 import 'screens/pharm_contact.dart';
@@ -64,7 +65,7 @@ class _NavigationBarState extends State<NavigationBar> {
           Icon(Icons.map, size: 30),
           Icon(Icons.more, size: 30.0),
         ],
-        color: Colors.black,
+        color: MyTheme.bColor,
         buttonBackgroundColor: Colors.black,
         backgroundColor: Colors.blueAccent,
         animationCurve: Curves.easeInSine,
@@ -87,7 +88,6 @@ class _NavigationBarState extends State<NavigationBar> {
   }
 
   Widget primaryFeature({required int index}) {
-    Widget primaryWidget;
     switch (index) {
       case 1:
         return Reminder(); // Ashmit
@@ -100,7 +100,7 @@ class _NavigationBarState extends State<NavigationBar> {
         return  const More();
 
       default:
-        return Container();
+         return const HomeScreen();
     }
   }
 }

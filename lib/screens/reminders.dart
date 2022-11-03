@@ -22,6 +22,7 @@ class Reminder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _itemController.getMedicines();
+    _itemController.getActivities();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Reminders'),
@@ -92,7 +93,7 @@ class Reminder extends StatelessWidget {
                     return ReminderTile(
                       title: currentActivity.title as String,
                       note: currentActivity.note as String,
-                      date: currentActivity.note as String,
+                      date: currentActivity.date as String,
                       type: currentActivity.type as int,
                       time: currentActivity.time,
                     );

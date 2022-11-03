@@ -4,10 +4,13 @@ import 'package:my_meds/utilities/db_helper.dart';
 
 import 'package:my_meds/models/medicine.dart';
 
+import '../models/item.dart';
+
 class ItemController extends GetxController {
 
   var medicineList = <Medicine>[].obs;
   var activityList = <Activity>[].obs;
+  var itemsList = <Map<String, dynamic>>[].obs;
 
   Future<int?> addMedicine({Medicine? medicine}) async {
     return await DBHelper.insertMedicine(medicine);
@@ -15,7 +18,7 @@ class ItemController extends GetxController {
 
   void getMedicines() async {
     var  medicines = await  DBHelper.readAllMedicines();
-    print('getMedicines() : ${medicines.runtimeType}');
+    // print('getMedicines() : $medicines');
     medicineList.assignAll(medicines.map((data) => Medicine.fromJson(data)).toList());
   }
 
@@ -25,7 +28,15 @@ class ItemController extends GetxController {
 
   void getActivities() async {
     var  activities = await  DBHelper.readAllActivities();
-    print('getActivities() : ${activities.runtimeType}');
+    // print('getActivities() : $activities');
     activityList.assignAll(activities.map((data) => Activity.fromJson(data)).toList());
+
+  }
+
+  void getAllItems(String format) async {
+    print('Getting all the items');
+    var result = await DBHelper.readAllItems(date : format);
+    print(result);
+    itemsList.assignAll(result);
   }
 }
