@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 
 import '../models/activity.dart';
 import '../models/medicine.dart';
+import '../utilities/db_helper.dart';
 import '../utilities/medicine_controller.dart';
 import 'package:get/get.dart';
 
@@ -134,7 +135,6 @@ class _HomeScreen extends State<HomeScreen> {
 // }
 
   _showItems() {
-
     return Expanded(
       child: Obx(() {
         return ListView.builder(
