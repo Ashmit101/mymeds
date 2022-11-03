@@ -44,4 +44,6 @@ class ItemController extends GetxController {
     var changes = await DBHelper.updateItem(medicine, activity);
     return changes;
   }
+
+  getSpecificItem(int id) {}
 }

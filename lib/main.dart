@@ -18,8 +18,6 @@ import 'screens/pharmContact/pharm_contact.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:get/get.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 
 Future main() async {
@@ -32,17 +30,17 @@ Future main() async {
       null,
       [
         NotificationChannel(
-            channelGroupKey: 'basic_channel_group',
-            channelKey: 'basic_channel',
-            channelName: 'Basic notifications',
-            channelDescription: 'Notification channel for basic tests',
+            channelGroupKey: 'scheduled_group',
+            channelKey: 'scheduled',
+            channelName: 'Medications and Activities',
+            channelDescription: 'Notification channel for medications and activities',
             defaultColor: Color(0xFF9D50DD),
             ledColor: Colors.white)
       ],
       // Channel groups are only visual and are not required
       channelGroups: [
         NotificationChannelGroup(
-            channelGroupKey: 'basic_channel_group',
+            channelGroupKey: 'schedule_group',
             channelGroupName: 'Basic group')
       ],
       debug: true
@@ -113,7 +111,6 @@ class _NavigationBarState extends State<NavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    _notificationController.sendNotification();
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
