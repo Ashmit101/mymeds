@@ -5,7 +5,7 @@ import 'package:my_meds/widgets/pharm_tile.dart';
 import '../utilities/geoapify_api_caller.dart';
 import '../utilities/current_location.dart';
 
-import '../screens/pharm_contact.dart';
+
 
 class PharmContactScreen extends StatefulWidget {
   const PharmContactScreen({super.key});
@@ -25,7 +25,6 @@ class _PharmContactScreenState extends State<PharmContactScreen> {
         _nearbyPharmaData = pharmaData;
       });
     }
-
   }
 
 
