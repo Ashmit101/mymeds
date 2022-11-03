@@ -15,7 +15,7 @@ class DBHelper {
     try {
       String path = '${await getDatabasesPath()}items.db';
       _db =
-          await openDatabase(path, version: _version, onCreate: (db, version) {
+      await openDatabase(path, version: _version, onCreate: (db, version) {
         print('Creating a new database');
 
         var sqlCreate = "CREATE TABLE $_tableName("
@@ -25,7 +25,6 @@ class DBHelper {
             "time STRING, type INTEGER)";
 
         return db.execute(sqlCreate);
-
       });
     } catch (e) {
       print(e);
@@ -48,19 +47,42 @@ class DBHelper {
     return id;
   }
 
-
   static Future<List<Map<String, dynamic>>> readAllMedicines() async {
-    final result = await _db?.query(_tableName, where: '"type" = ?', whereArgs: ['1']);
+    final result =
+    await _db?.query(_tableName, where: '"type" = ?', whereArgs: ['1']);
     return result as List<Map<String, dynamic>>;
   }
 
   static Future<List<Map<String, dynamic>>> readAllActivities() async {
-    final result = await _db?.query(_tableName, where: '"type" = ?', whereArgs: ['2']);
+    final result =
+    await _db?.query(_tableName, where: '"type" = ?', whereArgs: ['2']);
     return result as List<Map<String, dynamic>>;
   }
 
-  static Future<List<Map<String, dynamic>>> readAllItems({required String date}) async {
-    final result = await _db?.query(_tableName, where: '"date" = ?', whereArgs: [date]);
+  static Future<List<Map<String, dynamic>>> readAllItems(
+      {required String date}) async {
+    final result =
+    await _db?.query(_tableName, where: '"date" = ?', whereArgs: [date]);
     return result as List<Map<String, dynamic>>;
+  }
+
+  static updateItem(Medicine? medicine, Activity? activity) async {
+    var changes;
+    if (medicine != null) {
+      changes = await _db?.update(_tableName, medicine.toJson(),
+          where: '"id" = ?', whereArgs: [medicine.id]);
+    } else {
+      changes = await _db?.update(_tableName, activity!.toJson(),
+          where: '"id" = ?', whereArgs: [activity.id]);
+    }
+    return changes;
+  }
+
+  static Future<Medicine> getSpecificItem(int id) async {
+    var result = await _db?.query(
+        _tableName, where: '"id" = ?', whereArgs: [id]) as List<
+        Map<String, dynamic>>;
+    var resultItem = result[0];
+    return Medicine.fromJson(resultItem);
   }
 }
