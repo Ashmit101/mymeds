@@ -123,14 +123,19 @@ class DBHelper {
   static Future<String> getMedicineNames() async {
     final result =
         await _db?.query(_tableName, where: '"type" = ?', whereArgs: ['1']) as List<Map<String, dynamic>>;
-    String names  = result[0]['title'];
 
-    for(int i = 1; i < result.length; i++){
-      names = '$names \n${result[i]['title']}';
+    if(result.isNotEmpty){
+      String names = result[0]['title'];
+
+      for (int i = 1; i < result.length; i++) {
+        names = '$names \n${result[i]['title']}';
+      }
+
+      print(names);
+      return names;
+    } else {
+      return '';
     }
-
-    print(names);
-    return names;
 
   }
 }
