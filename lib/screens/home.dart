@@ -133,7 +133,6 @@ class _HomeScreen extends State<HomeScreen> {
 // }
 
   _showItems() {
-    print(_itemController.itemsList);
 
     return Expanded(
       child: Obx(() {
@@ -146,6 +145,7 @@ class _HomeScreen extends State<HomeScreen> {
                 var medicine =
                     Medicine.fromJson(_itemController.itemsList[index]);
                 return ReminderTile(
+                  id: medicine.id as int,
                   title: medicine.title as String,
                   note: medicine.note as String,
                   date: medicine.date as String,
@@ -155,10 +155,10 @@ class _HomeScreen extends State<HomeScreen> {
                   sequence: medicine.sequence,
                 );
               } else {
-                print("Is of activity");
                 var activity =
                     Activity.fromJson(_itemController.itemsList[index]);
                 return ReminderTile(
+                  id: activity.id as int,
                 title: activity.title as String,
                   note: activity.note as String,
                   date: activity.date as String,

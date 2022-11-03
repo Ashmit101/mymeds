@@ -1,6 +1,7 @@
 // Local Import
 import 'utilities/notification_services.dart';
 // Screens
+import 'package:my_meds/LanguageTranslator.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:my_meds/screens/reminders.dart';
 import 'package:my_meds/utilities/db_helper.dart';
@@ -59,6 +60,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      translations: LanguageMapping(),
+      locale: Locale('en', 'US'),
       title: 'TO be named',
       theme: ThemeData(
         brightness: Brightness.dark,
