@@ -78,7 +78,7 @@ class MyApp extends StatelessWidget {
         // ),
         // fontFamily: 'Roboto',
       ),
-      home: NavigationBar(),
+      home: const NavigationBar(),
     );
   }
 }

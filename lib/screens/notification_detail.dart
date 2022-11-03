@@ -18,28 +18,34 @@ class NotificationDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Update Item'),
+        title: Text(title),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(
-            title,
-          ),
-          Text(note),
+          const SizedBox(height: 200,),
+          Text('Did you take $title'),
+          const SizedBox(height: 75,),
+          // ),
+          // const Spacer(),
           Row(
             children: [
+              const Spacer(),
               Expanded(
                   child: ElevatedButton(
                       onPressed: () {
                         Get.back();
                       },
-                      child: Text('Skip'))),
+                      child: const Text('Skip'))),
+              const Spacer(),
               Expanded(
-                  child: ElevatedButton(onPressed: () {
-                    DBHelper.reduceDose(id);
-                    Get.back();
-                  }, child: const Text("Done")))
+                  child: ElevatedButton(
+                      onPressed: () {
+                        DBHelper.reduceDose(id);
+                        Get.back();
+                      },
+                      child: const Text("Done"))),
+              const Spacer(),
             ],
           )
         ],
