@@ -5,6 +5,7 @@ import 'package:fluttercontactpicker/fluttercontactpicker.dart';
 import 'package:flutter_sms/flutter_sms.dart';
 import 'package:location/location.dart';
 import 'package:my_meds/utilities/current_location.dart';
+import 'package:get/get.dart';
 
 import '../../utilities/position_to_map.dart';
 
@@ -61,7 +62,7 @@ List<String> recipents = [];
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Emergency Contact')          
+        title: Text('${'Emergency contacts'.tr}')
       ),
       
       body: StreamBuilder<List<Contacts>>(

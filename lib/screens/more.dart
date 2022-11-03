@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_meds/screens/more/LanguageDialog.dart';
 import 'package:my_meds/screens/more/contactSMS.dart';
 import 'package:get/get.dart';
 import 'package:my_meds/screens/more/search.dart';
@@ -15,8 +16,8 @@ class More extends StatelessWidget {
       children: [
         ListTile(
           leading: const CircleAvatar(child: Icon(Icons.contact_phone),),
-          title:  const Text('Call and SMS'),
-          subtitle:  const Text('Emergency call and SMS'),
+          title:   Text('${'Contact and SMS'.tr}'),
+          subtitle:   Text('${'Send SMS to your close ones'.tr}'),
           onTap: () {
             Get.to(ImportContact());
           },
@@ -24,8 +25,8 @@ class More extends StatelessWidget {
         ListTile(
           
           leading: const CircleAvatar(child: Icon(Icons.share)),
-          title: const Text('Share Medication'),
-          subtitle: const Text('Share your medication details'),
+          title:  Text('${'Share Medication'.tr}'),
+          subtitle:  Text('${'Share your medication details'.tr}'),
           onTap: () {                
             String medicationList = "Test";
             shareMed(medicationList);
@@ -34,12 +35,22 @@ class More extends StatelessWidget {
             ListTile(
           
           leading: const CircleAvatar(child: Icon(Icons.search)),
-          title: const Text('Search Medicine'),
-          subtitle: const Text('Find more information about the medicine'),
+          title:  Text('${'Search Medicine'.tr}'),
+          subtitle: Text('${'Find more information about the medicine'.tr}'),
           onTap: () {                
             Get.to(WebSearch());
           },
     ),
+
+        ListTile(
+
+          leading: const CircleAvatar(child: Icon(Icons.language_outlined)),
+          title:  Text('${'Change language'.tr}'),
+          subtitle: Text('${'Pick your preferred language'.tr}'),
+          onTap: () {
+            Get.to(SelectLanguage());
+          },
+        ),
         ],
       );
   }
