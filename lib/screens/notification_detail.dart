@@ -1,59 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_meds/models/activity.dart';
+import 'package:my_meds/utilities/medicine_controller.dart';
 
 import '../models/medicine.dart';
+import '../utilities/db_helper.dart';
 
 class NotificationDetails extends StatelessWidget {
-  final Medicine? medicine;
-  final Activity? activity;
-  const NotificationDetails({super.key, this.medicine, this.activity});
+  final String title;
+  final String note;
+  final int id;
+
+  const NotificationDetails(
+      {super.key, required this.title, required this.note, required this.id});
 
   @override
   Widget build(BuildContext context) {
-    String title;
-    String note;
-    String done, skip;
-    String appBarTitle;
-    if (medicine != null) {
-      title = medicine!.title as String;
-      note = medicine!.note as String;
-      done = 'Took it';
-      skip = "Skipped";
-      appBarTitle = 'Take Medicine';
-    } else {
-      title = activity!.title as String;
-      note = activity!.note as String;
-      done = 'Done';
-      skip = 'Skip';
-      appBarTitle = 'Perform Activity';
-    }
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(appBarTitle),
+        title: const Text('Update Item'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-              title,
-
+            title,
           ),
-          Text(
-            note
-          ),
+          Text(note),
           Row(
-            
             children: [
-              Expanded(child: ElevatedButton(
-                
-                onPressed: (){
-                Get.back();
-              }, child: Text(skip))),
-              Expanded(child: ElevatedButton(onPressed: (){
-                
-              }, child: Text(done)))
+              Expanded(
+                  child: ElevatedButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      child: Text('Skip'))),
+              Expanded(
+                  child: ElevatedButton(onPressed: () {
+                    DBHelper.reduceDose(id);
+                    Get.back();
+                  }, child: const Text("Done")))
             ],
           )
         ],

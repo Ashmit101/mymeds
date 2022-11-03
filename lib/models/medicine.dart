@@ -7,13 +7,13 @@ class Medicine extends Item {
 
   Medicine(
       {required super.title,
-      required super.note,
-      required super.date,
-      required this.meal,
-      required this.sequence,
-      required this.dose,
-      super.id,
-      super.type = 1});
+        required super.note,
+        required super.date,
+        required this.meal,
+        required this.sequence,
+        required this.dose,
+        super.id,
+        super.type = 1});
 
   Medicine.fromJson(Map<String, dynamic> json)
       : dose = json["dose"],
@@ -33,6 +33,43 @@ class Medicine extends Item {
     data['type'] = type;
     return data;
   }
+
+  DateTime getDateTime(){
+    print('date: $date');
+    List<String> dateList = (date as String).split('/');
+    print(dateList);
+    int year = int.parse(dateList[2]);
+    int month = int.parse(dateList[0]);
+    int day = int.parse(dateList[1]);
+
+    String monthStr = '$month';
+    if(month < 10){
+      monthStr = '0$month';
+    }
+    String dayStr = '$day';
+    if(day < 10){
+      dayStr = '0$day';
+    }
+
+    String dateStr = '$year-$monthStr-$dayStr';
+
+    String timeStr;
+
+    switch(meal){
+      case 0:
+        timeStr = '09:00:00';
+        break;
+      case 1:
+        timeStr = '15:00:00';
+        break;
+      default:
+        timeStr = '19:00:00';
+    }
+    DateTime result = DateTime.parse('$dateStr $timeStr');
+    return result;
+  }
+
+
 }
 
 enum Meals { breakfast, lunch, dinner }
