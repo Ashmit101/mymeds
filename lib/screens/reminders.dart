@@ -66,6 +66,7 @@ class Reminder extends StatelessWidget {
                 itemBuilder: (_, index) {
                   var currentMedicine = _itemController.medicineList[index];
                   return ReminderTile(
+                    id: currentMedicine.id as int,
                     title: currentMedicine.title as String,
                     note: currentMedicine.note as String,
                     date: currentMedicine.note as String,
@@ -91,6 +92,7 @@ class Reminder extends StatelessWidget {
                   itemBuilder: (_, index) {
                     var currentActivity = _itemController.activityList[index];
                     return ReminderTile(
+                      id: currentActivity.id as int,
                       title: currentActivity.title as String,
                       note: currentActivity.note as String,
                       date: currentActivity.date as String,

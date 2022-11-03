@@ -39,4 +39,9 @@ class ItemController extends GetxController {
     print(result);
     itemsList.assignAll(result);
   }
+
+  Future<int> updateItem({Medicine? medicine, Activity? activity}) async {
+    var changes = await DBHelper.updateItem(medicine, activity);
+    return changes;
+  }
 }
