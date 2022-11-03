@@ -50,15 +50,15 @@ class _PharmContactScreenState extends State<PharmContactScreen> {
     getPharmaData();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PharmaData Lol'),
+        title:  Text('PharmaData'.tr),
       ),
       body: Column(
         children: [
           TextField(
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               icon: Icon(Icons.social_distance),
               hintText: 'Enter Distance of search',
-              labelText: 'Distance *',
+              labelText: 'Distance'.tr,
             ),
             onChanged: (String? value) {
               // This optional block of code can be used to run
