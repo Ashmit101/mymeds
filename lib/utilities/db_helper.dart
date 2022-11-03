@@ -36,6 +36,7 @@ class DBHelper {
     print(medicine!.toJson().toString());
     int? id = await _db?.insert(_tableName, medicine.toJson()) ?? -1;
     print('Stored in row id: $id');
+
     return id;
   }
 

@@ -104,7 +104,6 @@ class _NavigationBarState extends State<NavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    _notificationController.sendNotification();
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
         key: _bottomNavigationKey,
