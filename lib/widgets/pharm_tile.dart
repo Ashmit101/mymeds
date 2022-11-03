@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../screens/pharmContact/pharm_map.dart';
 import '../utilities/geoapify_api_caller.dart';
 import '../screens/pharmContact/prescription_cam.dart';
+import '../screens/pharmContact/display_picture_screen.dart';
+
+import 'package:image_picker/image_picker.dart';
+
+import 'dart:io';
 
 // import '../screens/form.dart';
 
@@ -39,8 +45,15 @@ class PharmTileData extends StatelessWidget {
       onDoubleTap: (() {
         Get.to(PharmMap(pharmaData: pharmaData,));
       }),
-      onLongPress: (() {
-
+      onLongPress: (() async {
+        File? image;
+          try {
+            final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+            if(image == null) return;
+            Get.to(DisplayPictureScreen(imagePath: image.path, pharmaData: pharmaData));
+          } on PlatformException catch(e) {
+            print('Failed to pick image: $e');
+          }
       }),
       child: Column(
         children: [
