@@ -79,7 +79,6 @@ class _NavigationBarState extends State<NavigationBar> {
       ),
       body: Container(
         color: Colors.indigo,
-        padding: const EdgeInsets.all(10.0),
         height: double.infinity,
         width: double.infinity,
         child: primaryFeature(index: navigationIndex),
