@@ -1,6 +1,7 @@
 // Local Import
 
 // Screens
+import 'package:my_meds/LanguageTranslator.dart';
 import 'package:my_meds/screens/reminders.dart';
 import 'package:my_meds/utilities/db_helper.dart';
 import 'package:my_meds/widgets/themes.dart';
@@ -20,7 +21,6 @@ import 'package:my_meds/screens/more.dart';
   WidgetsFlutterBinding.ensureInitialized();
   await DBHelper.initDb();
   await Firebase.initializeApp();
-
   runApp(const MyApp());
 }
 
@@ -31,6 +31,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      translations: LanguageMapping(),
+      locale: Locale('en', 'US'),
       title: 'TO be named',
       theme: ThemeData(
         brightness: Brightness.dark,
