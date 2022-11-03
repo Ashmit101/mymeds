@@ -31,7 +31,7 @@ import 'package:my_meds/screens/more.dart';
         channelKey: 'basic_channel',
         channelName: 'Basic notifications',
         channelDescription: 'Notification channel for basic tests',
-        defaultColor: Color(0xFF9D50DD),
+        defaultColor: Color(0x00BFD2BF),
         ledColor: Colors.white)
   ],
   // Channel groups are only visual and are not required
@@ -62,7 +62,16 @@ class MyApp extends StatelessWidget {
       title: 'TO be named',
       theme: ThemeData(
         brightness: Brightness.dark,
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
+        // // primarySwatch: MaterialColor(0x003C91E6),
+        // colorScheme: ColorScheme.fromSwatch().copyWith(
+        //   background: const  Color(0x00bfd2bf),
+        //   primary: const Color(0x0056494E),
+        //   secondary: const Color(0x003C91E6),
+        //
+        //   // secondary:,
+        // ),
+        // fontFamily: 'Roboto',
       ),
       home: NavigationBar(),
     );
@@ -102,13 +111,14 @@ class _NavigationBarState extends State<NavigationBar> {
         height: 60.0,
         items: const <Widget>[
           Icon(Icons.home, size: 30),
-          Icon(Icons.punch_clock, size: 30.0),
+          Icon(Icons.event_outlined, size: 30.0),
           Icon(Icons.map, size: 30),
           Icon(Icons.more, size: 30.0),
         ],
-        color: MyTheme.bColor,
-        buttonBackgroundColor: Colors.black,
-        backgroundColor: Colors.blueAccent,
+
+         color: const Color(0xFF088F6F),
+        buttonBackgroundColor: const Color(0x00BFD2BF),
+        backgroundColor: const Color(0x00D1B490),
         animationCurve: Curves.easeInSine,
         animationDuration: const Duration(milliseconds: 200),
         onTap: (index) {
@@ -119,7 +129,7 @@ class _NavigationBarState extends State<NavigationBar> {
         letIndexChange: (index) => true,
       ),
       body: Container(
-        color: Colors.indigo,
+        color: const Color(0x0056494E),
         height: double.infinity,
         width: double.infinity,
         child: primaryFeature(index: navigationIndex),
@@ -133,7 +143,7 @@ class _NavigationBarState extends State<NavigationBar> {
         return Reminder(); // Ashmit
 
       case 2:
-        return  const PharmContactScreen(); //Rujal
+        return const PharmContactScreen(); //Rujal
 
       case 3:
         return  const More();

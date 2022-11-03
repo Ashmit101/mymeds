@@ -37,7 +37,7 @@ List<String> recipents = [];
           FirebaseFirestore.instance.collection('Contacts').doc(contact.id).delete();
         },
         background: Container(
-            color: Colors.green,
+            color: const Color(0xFF088F6F),
             child: const Icon(Icons.delete),
         ),
 
