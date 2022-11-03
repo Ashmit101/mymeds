@@ -28,8 +28,7 @@ class More extends StatelessWidget {
           title:  Text('${'Share Medication'.tr}'),
           subtitle:  Text('${'Share your medication details'.tr}'),
           onTap: () {                
-            String medicationList = "Test";
-            shareMed(medicationList);
+            shareMed();
           },
     ),
             ListTile(
