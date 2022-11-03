@@ -24,7 +24,7 @@ class NotificationDetails extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const SizedBox(height: 200,),
-          Text('Did you take $title'),
+          Text(note),
           const SizedBox(height: 75,),
           // ),
           // const Spacer(),
