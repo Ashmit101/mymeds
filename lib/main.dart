@@ -7,7 +7,7 @@ import 'package:my_meds/utilities/db_helper.dart';
 import 'package:my_meds/widgets/themes.dart';
 
 import 'screens/home.dart';
-import 'screens/pharm_contact.dart';
+import 'screens/pharmContact/pharm_contact.dart';
 
 // Library Import
 import 'package:flutter/material.dart';
@@ -131,7 +131,6 @@ class _NavigationBarState extends State<NavigationBar> {
     switch (index) {
       case 1:
         return Reminder(); // Ashmit
-
 
       case 2:
         return const PharmContactScreen(); //Rujal
