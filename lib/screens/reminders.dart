@@ -25,26 +25,26 @@ class Reminder extends StatelessWidget {
     _itemController.getActivities();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Reminders'),
+        title: Text('Reminders'.tr),
       ),
         body : HawkFabMenu(
-          fabColor: Colors.indigo,
+          fabColor: const Color(0xff088f6f),
           items: [
-            HawkFabMenuItem(label: 'Add Medicine', ontap: (){
+            HawkFabMenuItem(label: 'Add Medicine'.tr, ontap: (){
               _goToForm(isForMedicine: true);
-            }, icon: const Icon(Icons.medication)),
-            HawkFabMenuItem(label: 'Add Activity', ontap: () {
+            }, icon: const Icon(Icons.medication,  color: Color(0xff01a87d)), color: Colors.white),
+            HawkFabMenuItem(label: 'Add Activity'.tr, ontap: () {
               _goToForm(isForMedicine: false);
-            }, icon: const Icon(Icons.directions_run))
+            }, icon: const Icon(Icons.directions_run, color: Color(0xff01a87d)), color: Colors.white)
           ],
           body: TabContainer(
             radius: 0,
-            color: Get.isDarkMode ? Colors.black : Colors.white,
+            color: Colors.black,
             isStringTabs: false,
             tabs: [
-              Text('Medicines',
+              Text('Medicines'.tr,
                 style: tabStyle,),
-              Text('Activities',
+              Text('Activities'.tr,
                 style: tabStyle,),
             ],
             children: [

@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import '../models/activity.dart';
 import '../models/medicine.dart';
 import '../utilities/medicine_controller.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -29,7 +30,7 @@ class _HomeScreen extends State<HomeScreen> {
     _itemController.getAllItems(DateFormat.yMd().format(_selectedDate));
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Today'),
+        title: Text('Today'.tr),
       ),
       body: Column(
         children: [
@@ -48,7 +49,7 @@ class _HomeScreen extends State<HomeScreen> {
         height: 100,
         width: 80,
         initialSelectedDate: DateTime.now(),
-        selectionColor: MyTheme.secondaryColor,
+        selectionColor: const Color(0x3f01a87d),
         selectedTextColor: MyTheme.textColor,
         dateTextStyle: const TextStyle(
           fontSize: 20,

@@ -17,7 +17,22 @@ class LanguageMapping extends Translations {
           'Contact and SMS': 'Contact and SMS',
           'Send SMS to your close ones' : 'Send SMS to your close ones',
           'Nepali' : 'Nepali',
-        },
+          'Take a picture': 'Take a picture',
+          'Distance':'Distance',
+          'PharmaData': 'PharmaData',
+          'Today' : 'Today',
+           'Reminders' : 'Reminders',
+           'Medicines' : 'Medicines',
+           'Activities' : 'Activities',
+           'Add Medicine' : 'Add Medicine',
+          'breakfast' : 'breakfast',
+          'lunch' : 'lunch',
+          'dinner' : 'dinner',
+          // 'After' : 'After',
+          // 'Before' : 'Before',
+          'Today' : 'Today',
+
+      },
         'ne_NP': {
           'Call and SMS' : 'कल र एस एम एस गर्नुहोस्',
           'Emergency contacts' : 'आपतकालीन सम्पर्कहरू',
@@ -32,7 +47,21 @@ class LanguageMapping extends Translations {
           'Contact and SMS' : 'सम्पर्क र एसएमएस',
           'Send SMS to your close ones' : 'आफ्नो नजिकका व्यक्तिहरूलाई एसएमएस पठाउनुहोस्',
           'Nepali' : 'नेपाली',
-        }
+          'Take a picture' : 'प्रिस्क्रिप्शनको तस्वीर लिनुहोस्',
+          'Distance' :'दूरी',
+          'PharmaData' : 'नजिकका औषधी पसलहरु',
+          'Today' : 'आज',
+          'Reminders' : 'रिमाइन्डरहरू',
+          'Medicines' : 'औषधीहरू',
+          'Activities' : 'गतिविधिहरु',
+          'Add Medicine' : 'औषधी थप्नुहोस्',
+          'breakfast' : 'बिहानको खाजा',
+          'lunch' : 'दिनको भोजन',
+          'dinner' : 'साँझको भोजन',
+          // 'After' : 'पछि',
+          // 'Before' : 'पछि',
+          'Today' : 'आज' ,
+      }
       };
 }
 
