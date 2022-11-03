@@ -23,7 +23,13 @@ class PharmTileData extends StatelessWidget {
         if (swipeDirection == null) return;
 
         if (swipeDirection == 'left') {
-          launchUrl(Uri.parse('tel://${pharmaData.phoneNo}'));
+          if (pharmaData.phoneNo != 'n/a') {
+            if (pharmaData.phoneNo.contains(';')) {
+              launchUrl(Uri.parse('tel://${pharmaData.phoneNo.substring(0, pharmaData.phoneNo.indexOf(';'))}'));
+            } else {
+              launchUrl(Uri.parse('tel://${pharmaData.phoneNo}'));
+            }
+          }
         }
 
         if (swipeDirection == 'right') {
@@ -31,7 +37,7 @@ class PharmTileData extends StatelessWidget {
         }
       },
       onDoubleTap: (() {
-        Get.to(PharmMap());
+        Get.to(PharmMap(pharmaData: pharmaData,));
       }),
       onTap: (() {}),
       child: Column(
