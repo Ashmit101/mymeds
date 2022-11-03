@@ -25,15 +25,15 @@ class Reminder extends StatelessWidget {
     _itemController.getActivities();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Reminders'),
+        title: Text('Reminders'.tr),
       ),
         body : HawkFabMenu(
           fabColor: Colors.indigo,
           items: [
-            HawkFabMenuItem(label: 'Add Medicine', ontap: (){
+            HawkFabMenuItem(label: 'Add Medicine'.tr, ontap: (){
               _goToForm(isForMedicine: true);
             }, icon: const Icon(Icons.medication)),
-            HawkFabMenuItem(label: 'Add Activity', ontap: () {
+            HawkFabMenuItem(label: 'Add Activity'.tr, ontap: () {
               _goToForm(isForMedicine: false);
             }, icon: const Icon(Icons.directions_run))
           ],
@@ -42,9 +42,9 @@ class Reminder extends StatelessWidget {
             color: Get.isDarkMode ? Colors.black : Colors.white,
             isStringTabs: false,
             tabs: [
-              Text('Medicines',
+              Text('Medicines'.tr,
                 style: tabStyle,),
-              Text('Activities',
+              Text('Activities'.tr,
                 style: tabStyle,),
             ],
             children: [

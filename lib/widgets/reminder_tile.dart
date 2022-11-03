@@ -6,7 +6,7 @@ import 'package:my_meds/utilities/medicine_controller.dart';
 import '../models/medicine.dart';
 import 'date.dart';
 import 'package:my_meds/widgets/themes.dart';
-
+import 'package:get/get.dart';
 class ReminderTile extends StatelessWidget {
 
   final _itemController = Get.put(ItemController());
