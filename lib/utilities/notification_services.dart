@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -52,3 +53,9 @@ class NotificationController extends GetxController {
   }
 
 }
+=======
+class NotifyHelper {
+
+
+}
+>>>>>>> Stashed changes

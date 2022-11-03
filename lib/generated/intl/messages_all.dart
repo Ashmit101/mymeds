@@ -16,16 +16,33 @@ import 'package:intl/message_lookup_by_library.dart';
 import 'package:intl/src/intl_helpers.dart';
 
 import 'messages_en.dart' as messages_en;
+<<<<<<< Updated upstream
+=======
+import 'messages_hi.dart' as messages_hi;
+import 'messages_ne.dart' as messages_ne;
+>>>>>>> Stashed changes
 
 typedef Future<dynamic> LibraryLoader();
 Map<String, LibraryLoader> _deferredLibraries = {
   'en': () => new Future.value(null),
+<<<<<<< Updated upstream
+=======
+  'hi': () => new Future.value(null),
+  'ne': () => new Future.value(null),
+>>>>>>> Stashed changes
 };
 
 MessageLookupByLibrary? _findExact(String localeName) {
   switch (localeName) {
     case 'en':
       return messages_en.messages;
+<<<<<<< Updated upstream
+=======
+    case 'hi':
+      return messages_hi.messages;
+    case 'ne':
+      return messages_ne.messages;
+>>>>>>> Stashed changes
     default:
       return null;
   }

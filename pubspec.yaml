@@ -31,9 +31,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+<<<<<<< Updated upstream
 
   flutter_localizations:
     sdk: flutter
+=======
+  flutter_localizations:
+    sdk: flutter
+
+>>>>>>> Stashed changes
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -58,6 +64,7 @@ dependencies:
   http: ^0.13.5
   flutter_map_marker_cluster: ^1.0.1
   geocoding: ^2.0.5
+<<<<<<< Updated upstream
   flutter_native_timezone: ^2.0.0
   rxdart: ^0.27.5
   awesome_notifications: ^0.7.4+1
@@ -65,6 +72,9 @@ dependencies:
   camera: ^0.10.0+4
   provider: ^6.0.4
   flutter_email_sender: ^5.1.0
+=======
+  provider: ^6.0.4
+>>>>>>> Stashed changes
 
 
 dev_dependencies:
@@ -122,3 +132,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+flutter_intl:
+  enabled: true
