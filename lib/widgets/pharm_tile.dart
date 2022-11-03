@@ -39,7 +39,9 @@ class PharmTileData extends StatelessWidget {
       onDoubleTap: (() {
         Get.to(PharmMap(pharmaData: pharmaData,));
       }),
-      onTap: (() {}),
+      onLongPress: (() {
+
+      }),
       child: Column(
         children: [
           ListTile(

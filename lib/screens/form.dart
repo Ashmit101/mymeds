@@ -48,7 +48,9 @@ class _AddItemState extends State<AddItem> {
     print('Is for medicine: $_isForMedicine');
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Medicine'),
+        title: _isForMedicine
+            ? const Text('Add Medicine')
+            : const Text('Add Activity'),
       ),
       body: Container(
         padding: const EdgeInsets.only(left: 20, right: 20),
@@ -164,7 +166,10 @@ class _AddItemState extends State<AddItem> {
                         onPressed: () {
                           _validateData();
                         },
-                        child: const Text('Add'))
+                        style: ElevatedButton.styleFrom(
+                          primary: const Color(0xff01a87d),
+                        ),
+                        child: const Text('Add')),
                   ],
                 ),
               )
@@ -227,7 +232,7 @@ class _AddItemState extends State<AddItem> {
         _noteEditingController.text.isEmpty) {
       Get.snackbar("Required", "All fields are required!",
           snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: Colors.white,
+          backgroundColor: const Color(0xff01a87d),
           icon: const Icon(Icons.warning_amber_rounded));
     }
   }
