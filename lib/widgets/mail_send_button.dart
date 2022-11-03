@@ -5,6 +5,7 @@ import 'package:geocoding/geocoding.dart';
 
 import '../utilities/current_location.dart';
 import '../utilities/geoapify_api_caller.dart';
+import '../utilities/position_to_map.dart';
 
 class MailSendButton extends StatelessWidget {
   final NearbyPharmaData pharmaData;
@@ -22,7 +23,7 @@ class MailSendButton extends StatelessWidget {
         var address = addresses.first;
 
         final Email sendEmail = Email(
-          body: 'I am in ${address.locality}, ${address.street},${address.subLocality}, ${address.subAdministrativeArea}',
+          body: 'I am in ${address.locality}, ${address.street},${address.subLocality}, ${address.subAdministrativeArea} \n ${getMapLink((locationData?.latitude)!, (locationData?.longitude)!)}',
           subject: 'Need medicine at ${address.locality}',
           recipients: ['${pharmaData.name.replaceAll(' ', '').toLowerCase()}@gmail.com'],
           // cc: ['example_cc@ex.com'],

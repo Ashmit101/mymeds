@@ -6,6 +6,7 @@ import 'package:flutter_sms/flutter_sms.dart';
 import 'package:location/location.dart';
 import 'package:my_meds/utilities/current_location.dart';
 
+import '../../utilities/position_to_map.dart';
 
 class ImportContact extends StatefulWidget {
   const ImportContact({super.key});
@@ -50,7 +51,7 @@ List<String> recipents = [];
   
   void currentLocation() async{         //To get Current Location
       LocationData? locationData = await getLocationData();
-      message = 'Latitude: ${locationData?.latitude.toString()} Longitude: ${locationData?.longitude.toString()} Date-Time: ${DateTime.fromMillisecondsSinceEpoch(locationData?.time?.toDouble().round() as int).toString()}';
+      message = 'Latitude: ${locationData?.latitude.toString()} Longitude: ${locationData?.longitude.toString()} Date-Time: ${DateTime.fromMillisecondsSinceEpoch(locationData?.time?.toDouble().round() as int).toString()} \n ${getMapLink((locationData?.latitude)!, (locationData?.longitude)!)}';
       _sendSMS(message, recipents);
 
    }
