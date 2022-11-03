@@ -3,8 +3,14 @@ import 'package:flutter/material.dart';
 
 import 'display_picture_screen.dart';
 
+import '../../utilities/geoapify_api_caller.dart';
+
 class PrescriptionCam extends StatefulWidget {
-  const PrescriptionCam({super.key});
+  final NearbyPharmaData pharmaData;
+
+  const PrescriptionCam({super.key, required this.pharmaData});
+
+
 
   @override
   State<PrescriptionCam> createState() => _PrescriptionCamWidget();
@@ -23,7 +29,10 @@ class _PrescriptionCamWidget extends State<PrescriptionCam> {
   @override
   Widget build(BuildContext context) {
     getCameras();
-    return TakePictureScreen(camera: _cameras.first);
+    return TakePictureScreen(
+        camera: _cameras.first,
+      pharmaData: widget.pharmaData,
+    );
   }
 }
 
@@ -31,9 +40,11 @@ class TakePictureScreen extends StatefulWidget {
   const TakePictureScreen({
     super.key,
     required this.camera,
+    required this.pharmaData
   });
 
   final CameraDescription camera;
+  final NearbyPharmaData pharmaData;
 
   @override
   TakePictureScreenState createState() => TakePictureScreenState();
@@ -107,6 +118,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
                   // Pass the automatically generated path to
                   // the DisplayPictureScreen widget.
                   imagePath: image.path,
+                  pharmaData: widget.pharmaData,
                 ),
               ),
             );

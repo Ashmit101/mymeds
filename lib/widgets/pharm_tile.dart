@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_meds/screens/pharmContact/pharm_map.dart';
-// import 'package:get/get_core/src/get_main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
+import '../screens/pharmContact/pharm_map.dart';
 import '../utilities/geoapify_api_caller.dart';
 import '../screens/pharmContact/prescription_cam.dart';
 
-import '../screens/form.dart';
+// import '../screens/form.dart';
 
 class PharmTileData extends StatelessWidget {
   final NearbyPharmaData pharmaData;
@@ -30,7 +27,7 @@ class PharmTileData extends StatelessWidget {
         }
 
         if (swipeDirection == 'right') {
-          Get.to(PrescriptionCam());
+          Get.to(PrescriptionCam(pharmaData: pharmaData,));
         }
       },
       onDoubleTap: (() {

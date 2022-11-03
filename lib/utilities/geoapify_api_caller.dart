@@ -17,7 +17,7 @@ class NearbyPharmaData {
   String phoneNo;
 }
 
-Future<List<NearbyPharmaData>> retrievePharmaData(double longitude, double latitude, num limit) async {
+Future<List<NearbyPharmaData>> retrievePharmaData(double longitude, double latitude, num limit, double distance) async {
   await dotenv.load(fileName: '.env');
   String? apiKey = dotenv.env['GEOAPIFY_API_KEY'];
   String? httpCall;
@@ -29,10 +29,10 @@ Future<List<NearbyPharmaData>> retrievePharmaData(double longitude, double latit
 
   // print('in future: long $longitude, lat $latitude');
 
-  bounds.add(longitude + 0.5);
-  bounds.add(latitude + 0.5);
-  bounds.add(longitude - 0.5);
-  bounds.add(latitude - 0.5);
+  bounds.add(longitude + distance);
+  bounds.add(latitude + distance);
+  bounds.add(longitude - distance);
+  bounds.add(latitude - distance);
 
   String searchCategories = "healthcare.hospital,healthcare.pharmacy";
 
