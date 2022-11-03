@@ -1,9 +1,16 @@
 // Local Import
-import '../utilities/current_location.dart';
+import 'package:date_picker_timeline/date_picker_timeline.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+import 'package:my_meds/widgets/reminder_tile.dart';
+import 'package:my_meds/widgets/themes.dart';
 
 // Library Import
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
+
+import '../models/activity.dart';
+import '../models/medicine.dart';
+import '../utilities/medicine_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,34 +20,154 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreen extends State<HomeScreen> {
-  LocationData? _locationData;
+  final _itemController = Get.put(ItemController());
 
-  void getCurrentLocation() async {
-    LocationData? locationData = await getLocationData();
-    if (mounted) {
-      setState(() {
-        _locationData = locationData;
-      });
-    }
-  }
+  DateTime _selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
-    getCurrentLocation();
-    if (_locationData == null) {
-      return const Center(
-        child: Text('Loading Current Location Data'),
-      );
-    } else {
-      return Center(
-        child: Column(
-          children: [
-            const Text('...\n\n'),
-            Text('Latitude: ${_locationData?.latitude}'),
-            Text('Longitude: ${_locationData?.longitude}')
-          ],
+    _itemController.getAllItems(DateFormat.yMd().format(_selectedDate));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Today'),
+      ),
+      body: Column(
+        children: [
+          _addDateBar(),
+          _showItems(),
+        ],
+      ),
+    );
+  }
+
+  _addDateBar() {
+    return Container(
+      margin: const EdgeInsets.only(top: 20, left: 20),
+      child: DatePicker(
+        DateTime.now(),
+        height: 100,
+        width: 80,
+        initialSelectedDate: DateTime.now(),
+        selectionColor: MyTheme.secondaryColor,
+        selectedTextColor: MyTheme.textColor,
+        dateTextStyle: const TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: Colors.grey,
         ),
-      );
-    }
+        monthTextStyle: const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          color: Colors.grey,
+        ),
+        dayTextStyle: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w600,
+          color: Colors.grey,
+        ),
+        onDateChange: (date) {
+          setState(() {
+            _selectedDate = date;
+            _itemController.getAllItems(DateFormat.yMd().format(_selectedDate));
+            print(_selectedDate);
+          });
+        },
+      ),
+    );
+  }
+
+//   _showTasks() {
+//     if (_itemController.itemsList.isEmpty) {
+//       return const Expanded(
+//         child: Center(
+//           child: Text("No item stored yet"),
+//         ),
+//       );
+//     } else {
+//       return Expanded(
+//           child: Obx((){
+//
+//           ListView.builder(
+//               itemCount: _itemController.itemsList.length,
+//               itemBuilder: (
+//               BuildContext context, int index) {
+//         if (_itemController.itemsList[index]['date'] ==
+//             DateFormat.yMd().format(_selectedDate)) {
+//           return Obx(() {
+//             if (_itemController.itemsList[index]['type'] == 1) {
+//               //Medicine
+//               var medicine =
+//                   Medicine.fromJson(_itemController.itemsList[index]);
+//               return ReminderTile(
+//                 title: medicine.title as String,
+//                 note: medicine.note as String,
+//                 date: medicine.date as String,
+//                 type: medicine.type as int,
+//                 meal: medicine.meal,
+//                 sequence: medicine.sequence,
+//                 dose: medicine.dose,
+//               );
+//             } else {
+//               //Activities
+//               var activity =
+//                   Activity.fromJson(_itemController.itemsList[index]);
+//
+//               return ReminderTile(
+//                 title: activity.title as String,
+//                 note: activity as String,
+//                 date: activity as String,
+//                 type: activity.type as int,
+//                 time: activity.time,
+//               );
+//             }
+//           });
+//         } else {
+//           return const Center(
+//             child: Text('No reminders for this day'),
+//           );
+//         }
+//
+//     });
+//     }
+//   }
+// }
+
+  _showItems() {
+    print(_itemController.itemsList);
+
+    return Expanded(
+      child: Obx(() {
+        return ListView.builder(
+            itemCount: _itemController.itemsList.length,
+            itemBuilder: (_, index) {
+              int type = _itemController.itemsList[index]['type'];
+
+              if (type == 1) {
+                var medicine =
+                    Medicine.fromJson(_itemController.itemsList[index]);
+                return ReminderTile(
+                  title: medicine.title as String,
+                  note: medicine.note as String,
+                  date: medicine.date as String,
+                  type: medicine.type as int,
+                  dose: medicine.dose,
+                  meal: medicine.meal,
+                  sequence: medicine.sequence,
+                );
+              } else {
+                print("Is of activity");
+                var activity =
+                    Activity.fromJson(_itemController.itemsList[index]);
+                return ReminderTile(
+                title: activity.title as String,
+                  note: activity.note as String,
+                  date: activity.date as String,
+                  time: activity.time,
+                  type: activity.type as int,
+                );
+              }
+            });
+      }),
+    );
   }
 }

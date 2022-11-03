@@ -58,4 +58,9 @@ class DBHelper {
     final result = await _db?.query(_tableName, where: '"type" = ?', whereArgs: ['2']);
     return result as List<Map<String, dynamic>>;
   }
+
+  static Future<List<Map<String, dynamic>>> readAllItems({required String date}) async {
+    final result = await _db?.query(_tableName, where: '"date" = ?', whereArgs: [date]);
+    return result as List<Map<String, dynamic>>;
+  }
 }
