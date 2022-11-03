@@ -133,7 +133,7 @@ class _NavigationBarState extends State<NavigationBar> {
         return Reminder(); // Ashmit
 
       case 2:
-        return const PharmContactScreen(); //Rujal
+        return  const PharmContactScreen(); //Rujal
 
       case 3:
         return  const More();

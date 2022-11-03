@@ -46,6 +46,7 @@ class _PharmContactScreenState extends State<PharmContactScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print('building');
     getPharmaData();
     return Scaffold(
       appBar: AppBar(
